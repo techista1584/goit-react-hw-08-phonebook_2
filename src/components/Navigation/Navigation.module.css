@@ -1,17 +1,15 @@
-/* Navigation.module.css */
-.link {
-  text-decoration: none;
-  padding: 12px;
-  font-weight: 700;
-  color: var(--primaryTextColor);
-  transition: all 0.5s ease;
-  text-shadow: 2px 2px 4px blue;
-}
+  link {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px;
+      font-weight: 700;
+      color: #2A363B;
+  }
 
-.link:not(:last-child) {
-  margin-right: 12px;
-}
-
-.link.active {
-  color: var(--secondaryTextColor);
-}
+  .activeLink {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px;
+      font-weight: 700;
+      color: #4267B2;
+  }

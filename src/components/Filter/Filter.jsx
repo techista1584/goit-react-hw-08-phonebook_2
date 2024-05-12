@@ -1,24 +1,34 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { filter } from 'redux/contacts/contactsSlice';
-import { getFilter } from 'redux/contacts/contactsSelectors';
+import React from 'react'
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import contactsActions from '../redux/contacts/contactsActions';
+import styles from './Filter.module.css'
+import contactsSelectors from '../redux/contacts/contactsSelectors';
 
-// Import CSS modules
-import css from './Filter.module.css';
+const Filter = ({value, onChangeFilter}) =>(
+    <div className={styles.filterContainer}>
+    <label className={styles.filterName} htmlFor='filter'>Find contacts by name</label>
+    <input
+    className={styles.filterField}
+    type='text'
+    value={value}
+    onChange={e=> onChangeFilter(e.target.value)}
+    id='filter'/>
+    </div>
+)
 
-const Filter = () => {
-  const dispatch = useDispatch();
-  const filterName = useSelector(getFilter);
+const mapStateToProps = (state) =>({
+    value: contactsSelectors.getFilter(state)
+})
 
-  const onChangeFilter = evt => {
-    dispatch(filter(evt.currentTarget.value.trim()));
-  }
-
-  return (
-    <label htmlFor="" value={filterName} className={css.label}>
-      <p className={css.titleFilter}>Find contacts by name</p>
-      <input type="text" onChange={onChangeFilter} placeholder="Enter search name" className={css.input} />
-    </label>
-  );
+const mapDispatchToProps = {
+    onChangeFilter: contactsActions.changeFilter
 }
 
-export default Filter;
+export default connect(mapStateToProps, mapDispatchToProps)(Filter)
+
+
+Filter.propTypes = {
+    value: PropTypes.string,
+    onChangeFilter: PropTypes.func
+}

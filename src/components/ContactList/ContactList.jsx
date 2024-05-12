@@ -1,44 +1,32 @@
-import ContactItem from '../ContactItem/ContactItem';
-import React from 'react';
-import Loader from 'components/Loader/Loader';
-import { useSelector } from 'react-redux';
-import { useFetchContactsQuery } from 'redux/contacts/contactsApi';
-import { getFilter } from 'redux/contacts/contactsSelectors';
+import React from 'react'
+import {connect} from 'react-redux'
+import { v4 as uuidv4 } from 'uuid';
+import { CSSTransition , TransitionGroup} from 'react-transition-group'
+// import PropTypes from 'prop-types';
+import Contact from '../Contact/Contact'
+import styles from './ContactList.module.css'
+import transitions from './transitions.module.css'
+import contactsSelectors from '../redux/contacts/contactsSelectors';
 
-// Import CSS modules
-import css from './ContactList.module.css';
+const ContactList = ({contacts}) => {
+    return(
+    <TransitionGroup component='ul' className={styles.contactList}>
+    {contacts.map(contact => 
+        
+    <CSSTransition 
+        classNames={transitions}
+        timeout={200}
+        key={uuidv4()}> 
+        
+        <Contact id={contact.id}/>
+       
+    </CSSTransition> )}
+    </TransitionGroup>
+    )
+}
 
-const ContactList = () => {
-  const { data: contacts, error, isLoading } = useFetchContactsQuery();
+const mapStateToProps = (state) =>{
+    return ({ contacts: contactsSelectors.getVisibleContacts(state) })
+}
 
-  const filter = useSelector(getFilter);
-
-  const filterContacts = () => {
-    return (
-      contacts &&
-      contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      )
-    );
-  };
-
-  const contactList = filterContacts();
-  const renderContacts = contacts && contactList.length > 0;
-
-  return (
-    <>
-      <ul className={css.list}>
-        {renderContacts &&
-          contactList.map(({ id, name, number }) => (
-            <ContactItem id={id} key={id} name={name} number={number} />
-          ))}
-        {isLoading && <Loader />}
-        {error && (
-          <h2 className={css.error}>Try adding phone details or contact your administrator</h2>
-        )}
-      </ul>
-    </>
-  );
-};
-
-export default ContactList;
+export default connect(mapStateToProps)(ContactList);

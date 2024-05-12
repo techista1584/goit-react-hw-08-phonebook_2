@@ -1,40 +1,30 @@
-/* UserMenu.module.css */
-.menuContainer {
-  display: flex;
-  align-items: center;
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+    padding: 12px 0;
 }
 
-.menuBox {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
+.title {
+    margin: 0;
+    padding: 8px 0 0;
 }
 
-.menuTitle {
-  font-size: 16px;
-  margin: 0;
-  color: var(--primaryTextColor);
-  transition: all 0.5s ease;
-  text-shadow: 2px 2px 4px blue;
-}
-
-.menuBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100%;
-  padding: 5px;
-  border-radius: 20px;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 15px;
-  box-shadow: 17px 17px 84px 18px rgba(21, 15, 15, 0.2) inset;
-  border: 2px solid rgb(252, 6, 6);
-  background-color: #eb1d1d;
-}
-
-.menuBtn:hover,
-.menuBtn:focus {
-  background-color: rgb(114, 113, 114);
+.btn {
+    background-color: #4267B2;
+    padding: 6px 6px;
+    border-radius: 3px;
+    transition: all 200ms ease;
+    font-weight: 500;
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    font-style: normal;
+    min-width: 50px;
 }
