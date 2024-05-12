@@ -1,6 +1,6 @@
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList';
-import Filter from 'components/Filter';
+import Filter from 'components/Filter/Filter';
 
 // Import CSS modules
 import css from './PageContacts.module.css';

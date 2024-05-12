@@ -2,13 +2,10 @@ import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { nanoid } from 'nanoid'
 import { useFetchContactsQuery, useCreateContactMutation } from 'redux/contacts/contactsApi';
-import Loader from 'components/Loader';
+import Loader from 'components/Loader/Loader';
 
 // Import CSS modules
-import formStyles from './Form.module.css';
-import labelStyles from './Label.module.css';
-import inputStyles from './Input.module.css';
-import buttonStyles from './Button.module.css';
+import css from './ContactForm.module.css';
 
 function ContactForm  () { 
   const [name, setName] = useState('');
@@ -60,11 +57,11 @@ function ContactForm  () {
   };
 
     return (
-    <form className={formStyles.form} onSubmit={handleSubmit} autoComplete='off'>
-      <label className={labelStyles.label}>
+    <form className={css.form} onSubmit={handleSubmit} autoComplete='off'>
+      <label className={css.label}>
         Name
         <input
-          className={inputStyles.input}
+          className={css.input}
           type="text"
           id="name_input"
           name="name"
@@ -77,10 +74,10 @@ function ContactForm  () {
         />
       </label>
 
-      <label className={labelStyles.label}>
+      <label className={css.label}>
         Number
         <input
-          className={inputStyles.input}
+          className={css.input}
           type="tel"
           id="name_input"
           name="number"
@@ -93,7 +90,7 @@ function ContactForm  () {
         />
       </label>
 
-      <button className={buttonStyles.button} type="submit" >Add contact</button>
+      <button className={css.button} type="submit" >Add contact</button>
       <Toaster />
       {isLoading && <Loader />}
     </form>

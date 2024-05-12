@@ -1,6 +1,6 @@
 import ContactItem from '../ContactItem/ContactItem';
 import React from 'react';
-import Loader from 'components/Loader';
+import Loader from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
 import { useFetchContactsQuery } from 'redux/contacts/contactsApi';
 import { getFilter } from 'redux/contacts/contactsSelectors';

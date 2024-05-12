@@ -4,14 +4,14 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'routes/PrivatRoutes';
 import PublicRoute from 'routes/PublicRoutes';
 import { authOperations, authSelectors } from 'redux/auth';
-import Loader from 'components/Loader';
+import Loader from 'components/Loader/Loader';
 import AppBar from 'components/AppBar';
 import { ToastContainer } from 'react-toastify';
 
-const PageHome = lazy(() => import('pages/PageHome'));
-const PageRegistration = lazy(() => import('pages/PageRegistration'));
-const PageLogin = lazy(() => import('pages/PageLogin'));
-const PageContacts = lazy(() => import('pages/PageContacts'));
+const PageHome = lazy(() => import('pages/PageHome/PageHome'));
+const PageRegistration = lazy(() => import('pages/PageRegistration/PageRegistration'));
+const PageLogin = lazy(() => import('pages/PageLogin/PageLogin'));
+const PageContacts = lazy(() => import('pages/PageContacts/PageContacts'));
 
 const App = () => {
   const dispatch = useDispatch();
